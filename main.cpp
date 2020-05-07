@@ -9,7 +9,13 @@ int main() {
 	std::cout << "Score" << std::endl;
 	std::cout << "-----------------------------------" << std::endl;
 	
-		
+	std::ifstream in_file;
+	in_file.open("responses.txt");
+	if(!in_file) {
+	
+		std::cerr << "Error opening file." << std::endl;
+		return 1;
+	}	
 
 	return 0;
 }
