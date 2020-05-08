@@ -3,6 +3,8 @@
 #include <fstream>
 #include <string>
 
+int get_score(const std::string &, const std::string &);
+
 int main() {
 
 	std::cout << std::setw(30) << std::left << "Student";
@@ -20,19 +22,24 @@ int main() {
 	std::string line {};
 	std::string correct_answer {};
 	bool correct_answer_saved = false;
+	size_t index {0};
 	while(std::getline(in_file, line)) {
 	
 		if(!correct_answer_saved) {
 		
 			correct_answer = line;
 			correct_answer_saved = true;
-			std::cout << correct_answer << std::endl;
 		}		
 		else {
 		
-			std::cout << "Sup" << std::endl;
 		}
+		index++;
 	}
 
 	return 0;
+}
+
+int get_score(const std::string &correct_answer, const std::string &student_answer) {
+
+	
 }
