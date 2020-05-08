@@ -15,7 +15,24 @@ int main() {
 	
 		std::cerr << "Error opening file." << std::endl;
 		return 1;
-	}	
+	}
+	
+	std::string line {};
+	std::string correct_answer {};
+	bool correct_answer_saved = false;
+	while(std::getline(in_file, line)) {
+	
+		if(!correct_answer_saved) {
+		
+			correct_answer = line;
+			correct_answer_saved = true;
+			std::cout << correct_answer << std::endl;
+		}		
+		else {
+		
+			std::cout << "Sup" << std::endl;
+		}
+	}
 
 	return 0;
 }
