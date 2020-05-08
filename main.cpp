@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 
-int get_score(const std::string &, const std::string &);
+size_t get_score(const std::string &, const std::string &);
 
 int main() {
 
@@ -31,7 +31,7 @@ int main() {
 			correct_answer_saved = true;
 		}		
 		else {
-		
+			size_t score = get_score(correct_answer, line);	
 		}
 		index++;
 	}
@@ -39,7 +39,15 @@ int main() {
 	return 0;
 }
 
-int get_score(const std::string &correct_answer, const std::string &student_answer) {
+size_t get_score(const std::string &correct_answer, const std::string &student_answer) {
 
+	size_t num_matches {0};
+	for(size_t i {0}; i < correct_answer.length(); i++) {
 	
+		if(correct_answer[i] == student_answer[i]) {
+		
+			num_matches++;
+		}
+	}
+	return num_matches;
 }
