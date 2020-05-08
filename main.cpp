@@ -23,6 +23,8 @@ int main() {
 	std::string correct_answer {};
 	bool correct_answer_saved = false;
 	int index {0};
+	double avg_score {};
+	int num_scores {0};
 	while(std::getline(in_file, line)) {
 	
 		if(!correct_answer_saved) {
@@ -36,10 +38,18 @@ int main() {
 			else { //Index is even. Output score.
 				int score = get_score(correct_answer, line);	
 				std::cout << std::to_string(score) << std::endl;
+				avg_score += score;
+				num_scores++;
 			}	
 		}
 		index++;
 	}
+
+	std::cout << "-----------------------------------" << std::endl;
+	avg_score = avg_score / num_scores;	
+	std::cout << std::setw(30) << std::left << "Average score: ";
+	std::cout << std::fixed << std::setprecision(1) << avg_score << std::endl;
+	in_file.close();
 
 	return 0;
 }
