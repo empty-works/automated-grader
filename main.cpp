@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 
-size_t get_score(const std::string &, const std::string &);
+int get_score(const std::string &, const std::string &);
 
 int main() {
 
@@ -22,7 +22,7 @@ int main() {
 	std::string line {};
 	std::string correct_answer {};
 	bool correct_answer_saved = false;
-	size_t index {0};
+	int index {0};
 	while(std::getline(in_file, line)) {
 	
 		if(!correct_answer_saved) {
@@ -31,7 +31,12 @@ int main() {
 			correct_answer_saved = true;
 		}		
 		else {
-			size_t score = get_score(correct_answer, line);	
+			if(index % 2 != 0) //Index is odd. Output student name.
+				std::cout << std::setw(30) << std::left << line;	
+			else { //Index is even. Output score.
+				int score = get_score(correct_answer, line);	
+				std::cout << std::to_string(score) << std::endl;
+			}	
 		}
 		index++;
 	}
@@ -39,9 +44,9 @@ int main() {
 	return 0;
 }
 
-size_t get_score(const std::string &correct_answer, const std::string &student_answer) {
+int get_score(const std::string &correct_answer, const std::string &student_answer) {
 
-	size_t num_matches {0};
+	int num_matches {0};
 	for(size_t i {0}; i < correct_answer.length(); i++) {
 	
 		if(correct_answer[i] == student_answer[i]) {
