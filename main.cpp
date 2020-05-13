@@ -40,10 +40,15 @@ int main() {
 		index++;
 	}
 
-	std::cout << "-----------------------------------" << std::endl;
-	avg_score = avg_score / num_scores;	
-	std::cout << std::setw(30) << std::left << "Average score: ";
-	std::cout << std::fixed << std::setprecision(1) << avg_score << std::endl;
+	if(index != 0) {
+		std::cout << "-----------------------------------" << std::endl;
+		avg_score = avg_score / num_scores;	
+		std::cout << std::setw(30) << std::left << "Average score: ";
+		std::cout << std::fixed << std::setprecision(1) << avg_score << std::endl;
+	}
+	else {
+		std::cout << "No students." << std::endl;
+	}
 	in_file.close();
 
 	return 0;
