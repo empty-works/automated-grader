@@ -21,27 +21,21 @@ int main() {
 	
 	std::string line {};
 	std::string correct_answer {};
-	bool correct_answer_saved = false;
 	int index {0};
 	double avg_score {};
 	int num_scores {0};
+	std::getline(in_file, line); //Read in first line which is always the answer.
+	correct_answer = line;
+	std::cout << "Testing first line: " << correct_answer << std::endl;
 	while(std::getline(in_file, line)) {
-	
-		if(!correct_answer_saved) {
-		
-			correct_answer = line;
-			correct_answer_saved = true;
-		}		
-		else {
-			if(index % 2 != 0) //Index is odd. Output student name.
-				std::cout << std::setw(30) << std::left << line;	
-			else { //Index is even. Output score.
-				int score = get_score(correct_answer, line);	
-				std::cout << std::to_string(score) << std::endl;
-				avg_score += score;
-				num_scores++;
-			}	
-		}
+		if(index % 2 == 0) //Index is even, output student name.
+			std::cout << std::setw(30) << std::left << line;	
+		else { //Index is even. Output score.
+			int score = get_score(correct_answer, line);	
+			std::cout << std::to_string(score) << std::endl;
+			avg_score += score;
+			num_scores++;
+		}	
 		index++;
 	}
 
