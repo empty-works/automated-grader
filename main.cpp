@@ -25,7 +25,8 @@ int main() {
 	double avg_score {};
 	int num_scores {0};
 	std::getline(in_file, line); //Read in first line which is always the answer.
-	correct_answer = line;
+	if(line != "")
+		correct_answer = line;
 	std::cout << "Testing first line: " << correct_answer << std::endl;
 	while(std::getline(in_file, line)) {
 		if(index % 2 == 0) //Index is even, output student name.
